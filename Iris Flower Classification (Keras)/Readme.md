@@ -17,7 +17,7 @@ Importando os módulos
 
  Carregando o dataset
 -------------
-Antes de executar essa linha, certifique-se de ter baixado a base de [dados].(https://github.com/JeffersonLPLima/ANN/blob/master/Iris%20Flower%20Classification%20%28Keras%29/iris.csv)
+Antes de executar essa linha, certifique-se de ter baixado a base de [dados](iris.csv).
 
 	dataframe  = pandas.read_csv("iris.csv", header=0)
 	dataset  = dataframe.values
