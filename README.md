@@ -14,7 +14,7 @@ https://www.python.org/ftp/python/3.5.2/python-3.5.2-amd64.exe
 
 
 
- Instalando bibliotecas importantes (Numpy, Scipy e Scikit-learn)
+ Instalando bibliotecas importantes (Numpy, Scipy, Scikit-learn e Pandas)
 -------------
 
 A instalação das bibliotecas será feita através do *pip*, o qual já vem por padrão no Python.
@@ -30,8 +30,11 @@ A instalação das bibliotecas será feita através do *pip*, o qual já vem por
 
  ## Scikit-learn ##
 
-    pip install -U scikit-learn
+    pip install scikit-learn
 
+ ## Scikit-learn ##
+
+    pip install pandas
 
 
 Instalando Tensorflow
