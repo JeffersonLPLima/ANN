@@ -28,11 +28,12 @@ Preparando os conjuntos de treino e teste
 	
 	X = dataset[:,0:4].astype(float)
 	y = dataset[:,4]
-	encode class values as integers
-	encoder = LabelEncoder()
+	encoder = LabelEncoder() #Codifica as classes (String) em valores inteiros.
 	encoder.fit(y)
 	encoded_Y = encoder.transform(y)
-	bin_y = np_utils.to_categorical(encoded_Y)
+	
+	bin_y = np_utils.to_categorical(encoded_Y) #Binariza as classes (one hot encoding) 
+						   #e.g Para um problema com três classes: 1 -> [1, 0, 0]   2-> [0, 1, 0]  3->  3->[0,0,1]
 	X_train,X_test,y_train,y_test=train_test_split(X,bin_y,train_size=0.5,random_state=1)
 
 
@@ -40,14 +41,16 @@ Criando a rede
 -------------
 
 	model=Sequential()
-	
-	model.add(Dense(16,input_shape=(4,)))
+	#A camada Dense funciona como "ativacao(dot(input, pesos) + bias)" onde a função de ativação é passada como argumento.
+	                #16 = dimensão da saída
+	model.add(Dense(16,input_shape=(4,))) #input_shape=(n_features,))) 
 	model.add(Activation("sigmoid"))
 	
-	model.add(Dense(3))
-	model.add(Activation("softmax"))
+	model.add(Dense(3))  #camada de saída obrigatoriamente tem que ser igual à dimensão dos labels		     
+	model.add(Activation("softmax")) 
 	
 	model.compile(optimizer="adam",loss="categorical_crossentropy",metrics=["accuracy"])
+	
 	
 	model.fit(X_train,y_train,nb_epoch=3,batch_size=1,verbose=1)
 
