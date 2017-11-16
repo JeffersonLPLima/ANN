@@ -32,7 +32,7 @@ A instalação das bibliotecas será feita através do *pip*, o qual já vem por
 
     pip install scikit-learn
 
- ## Scikit-learn ##
+ ## Pandas ##
 
     pip install pandas
 
