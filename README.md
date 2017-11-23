@@ -55,8 +55,7 @@ https://www.lfd.uci.edu/~gohlke/pythonlibs/
 
 É necessário baixar o pacote de acordo com a respectiva versão do python instalada, além da arquitatura do mesmo. Por exemplo,
 para instalação manual do numpy através do Python 3.6 -64bits:
--> Fazer download do arquivo *numpy‑1.13.3+mkl‑cp36‑cp36m‑win_amd64.whl*
--> instalar através do *pip* 
-		pip install diretorio/numpy‑1.13.3+mkl‑cp36‑cp36m‑win_amd64.whl
+* Fazer download do arquivo *numpy‑1.13.3+mkl‑cp36‑cp36m‑win_amd64.whl*
+* instalar através do *pip* : pip install diretorio/numpy‑1.13.3+mkl‑cp36‑cp36m‑win_amd64.whl
 
 -------------		
