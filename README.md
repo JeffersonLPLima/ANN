@@ -5,7 +5,7 @@ Redes Neurais Artificiais com Tensorflow (Keras e TFLearn)
 
     
 (Windows/Linux)
-Instalação do Python 3.x.y 64-bits:
+Instalação do Python 64-bits:
 -------
 É importante baixar a versão 64-bits, pois o TensorFlow não é compatível a versão 32 bits do Python.
 
