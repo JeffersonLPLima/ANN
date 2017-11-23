@@ -83,17 +83,18 @@ Preparando os conjuntos de treino e teste
 Criando a rede
 -------------
 
-	model=Sequential()
+	model=Sequential()   #Criando um objeto para adição das camadas 
 	#A camada Dense funciona como "ativacao(dot(input, pesos) + bias)" onde a função de ativação é passada como argumento.
 	                #16 = dimensão da saída
 	model.add(Dense(16,input_shape=(4,))) #input_shape=(n_features,))) 
-	model.add(Activation("sigmoid"))
-	
+	model.add(Activation("sigmoid"))    #mais funções de ativação: https://keras.io/activations/
 	model.add(Dense(3))  #camada de saída obrigatoriamente tem que ser igual à dimensão dos labels		     
 	model.add(Activation("softmax")) 
 	
 	model.compile(optimizer="adam",loss="categorical_crossentropy",metrics=["accuracy"])
-	
+	#Otimizadores: https://keras.io/optimizers/
+	#Funções de perda: https://keras.io/losses/
+	#Métricas:https://keras.io/metrics/
 	
 	model.fit(X_train,y_train,nb_epoch=3,batch_size=1,verbose=1)
 
