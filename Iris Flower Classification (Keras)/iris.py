@@ -37,6 +37,6 @@ model.add(Activation("softmax"))
 model.compile(optimizer="adam",loss="categorical_crossentropy",metrics=["accuracy"])
 
 model.fit(X_train,y_train,nb_epoch=3,batch_size=1,verbose=1)
-
+model.save('model.h5')
 loss, accuracy = model.evaluate(X_test, y_test, verbose=1)
 print("Accuracy = {:.2f}".format(accuracy))

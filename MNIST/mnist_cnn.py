@@ -28,18 +28,22 @@ x_test /= 255   #fixando intervalo [0, 1]
 y_train = keras.utils.to_categorical(y_train, num_classes)  #convertendo as classes em vetores binários (one hot encoding)
 y_test = keras.utils.to_categorical(y_test, num_classes)  
 
-model = Sequential()
-model.add(Dense(512, activation='relu', input_shape=(784,)))
-model.add(Dropout(0.2))
-model.add(Dense(512, activation='relu'))
-model.add(Dropout(0.2))
-model.add(Dense(num_classes, activation='softmax'))
+model = Sequential()      #Criando o modelo
+model.add(Conv2D(32, (3, 3), activation='relu', input_shape=input_shape))         #Camada de convolução 2d, com janela 3x3, e Adcionando a ativação relu.
+model.add(Conv2D(64, (3, 3), activation='relu'))  	 #Camada de convolução 2d, com janela 3x3, e Adcionando a ativação relu.
+model.add(AveragePooling2D(pool_size=(2, 2)))        #Camada de Pooling 2d, de tamanho 2x2, através da média. (Retira a média aritmética de janelas 2x2 na imagem, reduzindo a quantidade de características 4->1 por janela)
+model.add(Dropout(0.25))       #Camada de Dropout para evitar overfitting. Nada mais é do que desativar um neurônio. No caso a probabilidade de que isso seja feita é de 0.25, no exemplo em questão. 
+model.add(Flatten())    #Reduz a dimensão da camada. output_shape == (None, 64, 32, 32) -> Flatten() -> output_shape == (None, 65536)
+														
+model.add(Dense(128, activation='relu'))     #Camada completamente conectada
+model.add(Dense(num_classes, activation='softmax'))   #Camada de saída, com ativação softmax.
 
-model.compile(loss='categorical_crossentropy', optimizer='rmsprop', metrics=['accuracy'])
+model.compile(loss='categorical_crossentropy', optimizer='adam', metrics=['accuracy'])
 
   
 # monitores para o treinamento da rede
 #https://keras.io/callbacks/
+	
 
 #Reduz a taxa de aprendizado
 reduce_lr = ReduceLROnPlateau(monitor='val_loss',  #observar a função de perda no conjunto de validação
@@ -59,4 +63,5 @@ model.fit(x_train, y_train, batch_size=batch_size, epochs=epochs, callbacks=[red
 loss, accuracy = model.evaluate(x_test, y_test, verbose=0)
 
 print('Test accuracy:', accuracy)
+
  
