@@ -14,11 +14,9 @@ epochs = 20
 
 img_rows, img_cols = 28, 28 #dimensões das imagens
 (x_train, y_train), (x_test, y_test) = mnist.load_data() #Na primeira execução baixa o dataset, na segunda só carrega
-
-x_train = x_train.reshape(x_train.shape[0], img_rows, img_cols, 1) #ajustando o tamanho da matriz de treino
-x_test = x_test.reshape(x_test.shape[0], img_rows, img_cols, 1) #ajustando o tamanho da matriz de teste
-input_shape = (img_rows, img_cols, 1)  #definindo o tamanho da entrada da rede
-
+x_train = x_train.reshape(60000, 784) #ajustando o tamanho da matriz de treino
+x_test = x_test.reshape(10000, 784) #ajustando o tamanho da matriz de teste
+ 
 x_train = x_train.astype('float32')  #transformando os píxels das imagens em floats
 x_test = x_test.astype('float32') #transformando os píxels das imagens em floats
 x_train /= 255    #fixando intervalo [0, 1]
