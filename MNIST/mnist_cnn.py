@@ -24,9 +24,16 @@ x_test = x_test.astype('float32') #transformando os píxels das imagens em float
 x_train /= 255    #fixando intervalo [0, 1]
 x_test /= 255   #fixando intervalo [0, 1]
 
+x_val = x_train[50000:60000]
+y_val = y_train[50000:60000]
+
+
+x_train = x_train[0:50000]
+y_train = y_train[0:50000]
 
 y_train = keras.utils.to_categorical(y_train, num_classes)  #convertendo as classes em vetores binários (one hot encoding)
 y_test = keras.utils.to_categorical(y_test, num_classes)  
+y_val = keras.utils.to_categorical(y_val, num_classes)  
 
 model = Sequential()      #Criando o modelo
 model.add(Conv2D(32, (3, 3), activation='relu', input_shape=input_shape))         #Camada de convolução 2d, com janela 3x3, e Adcionando a ativação relu.
