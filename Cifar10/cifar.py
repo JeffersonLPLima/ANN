@@ -64,16 +64,28 @@ model.add(Dropout(0.5))
 model.add(Dense(num_classes))
 model.add(Activation('softmax'))
 
+
+	#**Reduz a taxa de aprendizado**
+	reduce_lr = ReduceLROnPlateau(monitor='val_loss',  #observar a função de perda no conjunto de validação
+								factor=0.2,     #fator pela qual a taxa será reduzida -> nova_taxa = taxa_atual * factor
+								verbose=1, 
+								patience=1,    # número de épocas, sem redução na função de perda, que o monitor espera para agir.
+								min_lr=0.0001) 	#limite inferior da nova_taxa. Menor que isso e o monitor não irá reduzir mais a taxa.
+
+	#**Interrompe o treinamento**
+	early_stopping=EarlyStopping(monitor='val_loss', #observar a função de perda no conjunto de validação
+								patience=4,    # número de épocas, sem redução na função de perda, que o monitor espera para agir.
+								verbose=1,)    
+												
+
 model.compile(loss='categorical_crossentropy', optimizer='rmsprop', metrics=['accuracy'])
 
 batch_size = 32
 num_classes = 10
 epochs = 100 
+ #fazendo uso dos monitores criados		
+	model.fit(x_train, y_train, batch_size=batch_size, epochs=epochs, callbacks=[reduce_lr, early_stopping], verbose=1, validation_data=(x_val, y_val)) 
  
-model.fit(x_train, y_train, batch_size=batch_size, epochs=epochs,validation_data=(x_val, y_val),shuffle=True)
- 
- 
-# Score trained model.
 loss, accuracy = model.evaluate(x_test, y_test, verbose=1)
 print('Test loss:', loss)
 print('Test accuracy:', accuracy)
