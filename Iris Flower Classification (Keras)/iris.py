@@ -22,6 +22,8 @@ encoder.fit(y)
 encoded_Y = encoder.transform(y)
 bin_y = np_utils.to_categorical(encoded_Y)
 
+
+
 X_train,X_test,y_train,y_test=train_test_split(X,bin_y,train_size=0.5,random_state=1)
 
 
