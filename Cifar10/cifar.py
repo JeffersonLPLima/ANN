@@ -84,7 +84,7 @@ batch_size = 32
 num_classes = 10
 epochs = 100 
  #fazendo uso dos monitores criados		
-	model.fit(x_train, y_train, batch_size=batch_size, epochs=epochs, callbacks=[reduce_lr, early_stopping], verbose=1, validation_data=(x_val, y_val)) 
+model.fit(x_train, y_train, batch_size=batch_size, epochs=epochs, callbacks=[reduce_lr, early_stopping], verbose=1, validation_data=(x_val, y_val)) 
  
 loss, accuracy = model.evaluate(x_test, y_test, verbose=1)
 print('Test loss:', loss)
