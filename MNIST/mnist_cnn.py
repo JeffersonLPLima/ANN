@@ -65,7 +65,7 @@ early_stopping=EarlyStopping(monitor='val_loss', #observar a função de perda n
 							verbose=1,)    
 																		
 																  #fazendo uso dos monitores criados		
-model.fit(x_train, y_train, batch_size=batch_size, epochs=epochs, callbacks=[reduce_lr, early_stopping], verbose=1, validation_data=(x_test, y_test))
+model.fit(x_train, y_train, batch_size=batch_size, epochs=epochs, callbacks=[reduce_lr, early_stopping], verbose=1, validation_data=(x_val, y_val))
 
 loss, accuracy = model.evaluate(x_test, y_test, verbose=0)
 
